@@ -1,0 +1,7 @@
+PS C:\Users\mpuget> cd C:\WPy64-31180\
+PS C:\WPy64-31180> cd .\python-3.11.8.amd64\
+PS C:\WPy64-31180\python-3.11.8.amd64> .\python.exe
+
+
+Fonctions:
+exit() 

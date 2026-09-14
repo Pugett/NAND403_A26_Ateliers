@@ -1,0 +1,8 @@
+Pep 08 Pyhton style guide
+Avoir un if si le nom du fichier est pas bon et que le programme se ferme
+
+Variables:
+this_is_a_variable = 1
+
+fonctions:
+def this_is_a_function():

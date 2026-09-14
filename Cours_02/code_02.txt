@@ -1,0 +1,7 @@
+CTRL + P
+> Pyhton:Select Interpreter
+
+
+POUR BREAK POINT (point rouge à gauche d'une ligne de code)
+Petite flèche à côté du Play/Run button
+Pyhtong Debugger: Debug Pyhton File
