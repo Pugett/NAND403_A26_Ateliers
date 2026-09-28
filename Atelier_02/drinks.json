@@ -1,0 +1,17 @@
+[
+    {   
+        "name" : "Whiskey my willey",
+        "price" : "6.69",
+        "type" : "alcohol"
+    },
+    {   
+        "cute name" : "Vodka aka Vod",
+        "nice price" : "9.11",
+        "cool type" : "alcohol"
+    },
+    {   
+        "name lol" : "Water Melon water",
+        "price d" : "420.69",
+        "type d" : "alcohol-free"
+    }
+]
