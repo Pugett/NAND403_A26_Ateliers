@@ -1,13 +1,15 @@
 # DOCUMENTATION COMMENT UTILISER L'OUTILS ET METTRE IMAGE
-#   1) COPIER LE CODE PYTHON IMPORTER DANS UN TAB PYTHON DU SCRIPT EDITOR DE MAYA
-#   2) CRÉER UN SHELF À L'AIDE DU PETIT ENGRENAGE DU SHELF EDITIOR EN HAUT À GAUCHE DE LA FENÊTRE MAYA
-#   3) SELECTIONNER TOUT VOTRE CODE PYTHON ET AVEC LE BUTON DU MILIEU DE VOTRE SOURI, CLICKER ET AMENER JUSQU'À VOTRE SHELF VIDE
-#   4) UNE ICONE DEVRAIT APPARAÎTRE
-#   5) VOUS POUVEZ TESTER LE CODE EN CLIQUANT DIRECTEMENT SUR L'ICON, VOTRE CODE DEVRAIT S'EXECUTER
-#   6) POUR CHANGER L'ICON DE CE NOUVEL OUTIL, FAITES UN CLICK DROIT SUR L'ICON ET SELECTIONNER "EDIT"
-#   7) ALLER DANS L'ONGLET "SHELVES" EN HAUT À DROITE DE LA FENÈTRE
-#   8) VOUS ALLER VOIR VERS LE BAS "ICON NAME", VOUS ALLLER CLICKER SUR LE DOSSIER À DROITE
-#   9) ALLER CHERCHER L'IMAGE DE VOTRE CHOIX
+#   + COPIER LE CODE PYTHON IMPORTER DANS UN TAB PYTHON DU SCRIPT EDITOR DE MAYA
+#   + REGARDER DANS LE CODE POUR LA SECTION SUIVANT : video_path = r"C:\Users\mpuget\_Session3\26_Python\CyberPunk2_Back.mp4"
+#   + CHANGER LE PATH DE LA VIDEO QUI VOUS A ÉTÉ FOURNIE "DANS MOODLE" OÙ VOUS LOCALISER SUR VOTRE PC.
+#   + CRÉER UN SHELF À L'AIDE DU PETIT ENGRENAGE DU SHELF EDITIOR EN HAUT À GAUCHE DE LA FENÊTRE MAYA
+#   + SELECTIONNER TOUT VOTRE CODE PYTHON ET AVEC LE BUTON DU MILIEU DE VOTRE SOURI, CLICKER ET AMENER JUSQU'À VOTRE SHELF VIDE
+#   + UNE ICONE DEVRAIT APPARAÎTRE
+#   + VOUS POUVEZ TESTER LE CODE EN CLIQUANT DIRECTEMENT SUR L'ICON, VOTRE CODE DEVRAIT S'EXECUTER
+#   + POUR CHANGER L'ICON DE CE NOUVEL OUTIL, FAITES UN CLICK DROIT SUR L'ICON ET SELECTIONNER "EDIT"
+#   + ALLER DANS L'ONGLET "SHELVES" EN HAUT À DROITE DE LA FENÈTRE
+#   + VOUS ALLER VOIR VERS LE BAS "ICON NAME", VOUS ALLLER CLICKER SUR LE DOSSIER À DROITE
+#   + ALLER CHERCHER L'IMAGE DE VOTRE CHOIX
 #  
 #
 from PySide6.QtWidgets import (QWidget, QLabel, QVBoxLayout, QLineEdit, QCheckBox, QPushButton, QFileDialog, QMessageBox)
@@ -24,7 +26,7 @@ import maya.cmds as cmds
 class RandomAnimationUI(QWidget):
     def __init__(self):
             super().__init__()
-            self.setWindowTitle("Outliner Organiser") #Window Settings
+            self.setWindowTitle("Outliner Organiser")
             self.setFixedSize(600, 300)
     
             self.scene = QGraphicsScene(self)
@@ -46,8 +48,7 @@ class RandomAnimationUI(QWidget):
             self.video_view.setGeometry(self.rect()
             )
             self.video_view.lower()
-    
-            # Keep the video behind the normal UI
+
             panel = QWidget(self)
             panel.setAttribute(
                 Qt.WidgetAttribute.WA_TranslucentBackground, True
@@ -61,35 +62,21 @@ class RandomAnimationUI(QWidget):
             layout.setContentsMargins(10, 10, 10, 10)
             layout.setSpacing(10)
     
-    
-            # Local looping video background (change this path)
             self.audio = QAudioOutput()
             self.audio.setVolume(10)
     
             self.player = QMediaPlayer()
             self.player.setAudioOutput(self.audio)
             self.player.setVideoOutput(self.video_item)
-    
+
+            # ------------------------------------------------------------------------- 
+            # SECTION A CHANGER !
             video_path = r"C:\Users\mpuget\_Session3\26_Python\CyberPunk2_Back.mp4"
+            #
+            # ------------------------------------------------------------------------- 
             self.player.setSource(QUrl.fromLocalFile(video_path))
             self.player.setLoops(QMediaPlayer.Loops.Infinite)
             self.player.play()
-    
-            #layout.addWidget(QLabel("enter JSON rule path pretty please n thank u")) # Set Box For Json File
-            #self.path_input = QLineEdit()
-            #self.path_input.setPlaceholderText("Path to rules.json")
-            #layout.addWidget(self.path_input)
-    
-            #self.selection = QCheckBox("Apply on selection only") # Add Check Boxes For Options (Set To False On Start)
-            #self.selection.setChecked(False)
-            #self.colors = QCheckBox("Apply colors")
-            #self.colors.setChecked(False)
-            #self.reorder = QCheckBox("Apply reorder")
-            #self.reorder.setChecked(False)
-    
-            #for checkbox in (self.selection, self.colors, self.reorder):
-            #    layout.addWidget(checkbox)
-    
     
             self.setStyleSheet("""
         OutlinerOrganiser {
@@ -161,27 +148,14 @@ import sys
 import importlib
 import maya.cmds as cmds
 
-# Obtenue le folder dans lequel il y a notre fichier courant 
-# __file__ = le fichier courant
-#absolute_file_path = os.path.abspath(__file__)
-#absolute_folder_path = os.path.dirname(absolute_file_path)
-#print(absolute_folder_path)
-# On vient ajouter absolute_folder_path au path de python pour quil puisse trouver ui.py
-#sys.path.append(absolute_folder_path)
-
-# APRES ON IMPORT LES CHOSES
-
-#absolute_path = os.path.abspath(os.path.curdir)
-#print(absolute_path)
-
-def main():                                     # Main Function
-    global widget                               # Setup UI
-    try:                                        #
-        widget.close()                          # Closes Past Windows
-        widget.deleteLater()                    #
-    except (NameError, RuntimeError):           #
-        pass                                    #
-    widget = RandomAnimationUI()                      # Build Window
-    widget.show()                               # Show Window
+def main():
+    global widget
+    try:
+        widget.close()
+        widget.deleteLater()
+    except (NameError, RuntimeError):
+        pass 
+    widget = RandomAnimationUI()
+    widget.show()
                                                 
 main()
