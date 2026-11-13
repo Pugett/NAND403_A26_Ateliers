@@ -1,0 +1,2 @@
+print(__name__.split(".")[-1])
+
